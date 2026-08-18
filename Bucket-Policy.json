@@ -1,26 +1,3 @@
------read,write policy
-
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowCloudFrontRWD",
-      "Effect": "Allow",
-      "Principal": { "Service": "cloudfront.amazonaws.com" },
-      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
-      "Resource": "arn:aws:s3:::static-wsh-project/*",
-      "Condition": {
-        "StringEquals": {
-          "AWS:SourceArn": "arn:aws:cloudfront::399605429130:distribution/EKPDDZXFJ5FIB"
-        }
-      }
-    }
-  ]
-}
-
-
-or
-
 -----readonly policy
 {
     "Version": "2008-10-17",
