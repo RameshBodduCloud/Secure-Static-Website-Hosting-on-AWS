@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexTech | AI & Cloud Computing Solutions</title>
+<meta name="description" content="Discover how Artificial Intelligence and Cloud Computing are transforming businesses worldwide.">
+
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --secondary: #06b6d4;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --light-bg: #f8fafc;
+    --white: #ffffff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ---------- NAVBAR ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  .logo span { color: var(--secondary); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-weight: 500;
+    color: var(--dark);
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--primary); }
+
+  .nav-cta {
+    background: var(--primary);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .nav-cta:hover { background: var(--primary-dark); }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+    padding: 100px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 650px;
+    margin: 0 auto 35px;
+    opacity: 0.95;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+  }
+
+  .btn-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+
+  .section-header p {
+    color: var(--gray);
+    font-size: 1.05rem;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(79,70,229,0.1);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---------- WHY SECTION ---------- */
+  .why-section {
+    padding: 90px 20px;
+    background: var(--light-bg);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+  }
+
+  .why-card {
+    background: var(--white);
+    padding: 35px 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+  .why-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .why-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  .why-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats-section {
+    padding: 70px 20px;
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    text-align: center;
+  }
+
+  .stat-item h3 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+
+  .stat-item p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-section {
+    padding: 90px 20px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .service-card {
+    padding: 40px 30px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(79,70,229,0.15);
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin: 20px 0 12px;
+  }
+
+  .service-card p {
+    color: var(--gray);
+    margin-bottom: 15px;
+  }
+
+  .service-card ul li {
+    color: var(--gray);
+    padding: 5px 0;
+    padding-left: 22px;
+    position: relative;
+    font-size: 0.93rem;
+  }
+
+  .service-card ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: 700;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .cta-section h2 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+  }
+
+  .cta-section p {
+    max-width: 550px;
+    margin: 0 auto 30px;
+    opacity: 0.95;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--dark);
+    color: #cbd5e1;
+    padding: 60px 20px 25px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-grid h4 {
+    color: var(--white);
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+  }
+
+  .footer-grid ul li {
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+  }
+
+  .footer-grid ul li a:hover { color: var(--secondary); }
+
+  .footer-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 15px;
+  }
+
+  .footer-logo span { color: var(--secondary); }
+
+  .footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding-top: 25px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #94a3b8;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+    .hero h1 { font-size: 2.1rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <div class="logo">Nex<span>Tech</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#why">Why AI & Cloud</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <div class="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Powering the Future with AI & Cloud Computing</h1>
+    <p>We help businesses harness the full potential of Artificial Intelligence and Cloud infrastructure to innovate faster, scale smarter, and stay ahead of the competition.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn btn-primary">Explore Services</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">WHY IT MATTERS</span>
+      <h2>The Importance of AI & Cloud in Today's World</h2>
+      <p>Organizations that adopt AI and Cloud technologies gain a significant competitive advantage in speed, efficiency, and innovation.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🤖</div>
+        <h3>Smarter Decision Making</h3>
+        <p>AI analyzes massive datasets in real time, enabling businesses to make faster, data-driven decisions with higher accuracy.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">☁️</div>
+        <h3>Infinite Scalability</h3>
+        <p>Cloud computing allows businesses to scale resources up or down instantly, without heavy upfront infrastructure investment.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Operational Efficiency</h3>
+        <p>Automating repetitive tasks with AI reduces human error and frees up teams to focus on high-value strategic work.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <h3>Enterprise-Grade Security</h3>
+        <p>Modern cloud platforms offer advanced security, compliance, and disaster recovery that most businesses can't build alone.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>Cost Optimization</h3>
+        <p>Pay-as-you-go cloud models and AI-driven automation significantly lower operational and infrastructure costs.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <h3>Global Accessibility</h3>
+        <p>Cloud-hosted applications and AI services can be accessed anytime, anywhere, enabling true digital transformation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>85%</h3>
+        <p>Businesses adopting AI by 2026</p>
+      </div>
+      <div class="stat-item">
+        <h3>94%</h3>
+        <p>Enterprises using Cloud services</p>
+      </div>
+      <div class="stat-item">
+        <h3>40%</h3>
+        <p>Cost reduction with automation</p>
+      </div>
+      <div class="stat-item">
+        <h3>3.5x</h3>
+        <p>Faster decision-making with AI</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">OUR SOLUTIONS</span>
+      <h2>What We Offer</h2>
+      <p>End-to-end AI and Cloud solutions tailored to your business needs.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="why-icon">🧠</div>
+        <h3>AI & Machine Learning</h3>
+        <p>Custom AI models built to solve real business problems.</p>
+        <ul>
+          <li>Predictive Analytics</li>
+          <li>Natural Language Processing</li>
+          <li>Computer Vision Solutions</li>
+          <li>Recommendation Engines</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="why-icon">☁️</div>
+        <h3>Cloud Infrastructure</h3>
+        <p>Scalable, secure, and cost-optimized cloud architecture.</p>
+        <ul>
+          <li>AWS / Azure / GCP Setup</li>
+          <li>Serverless Architecture</li>
+          <li>Auto-scaling & Load Balancing</li>
+          <li>Disaster Recovery Planning</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="why-icon">🔄</div>
+        <h3>Cloud Migration</h3>
+        <p>Seamless migration from on-premise to cloud environments.</p>
+        <ul>
+          <li>Zero-downtime Migration</li>
+          <li>Legacy System Modernization</li>
+          <li>Data Migration & Sync</li>
+          <li>Post-migration Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>Ready to Transform Your Business?</h2>
+    <p>Let's discuss how AI and Cloud Computing can accelerate your growth and innovation.</p>
+    <a href="mailto:contact@sudharam.online" class="btn btn-primary">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Nex<span>Tech</span></div>
+        <p style="font-size:0.9rem; color:#94a3b8;">Empowering businesses through Artificial Intelligence and Cloud Computing innovation.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#home">About Us</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#services">Services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="#">Cloud Computing</a></li>
+          <li><a href="#">Cloud Migration</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>sudharam.online</li>
+          <li>contact@sudharam.online</li>
+          <li>+91 98765 43210</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 NexTech. All rights reserved. Hosted on AWS (S3 + CloudFront).
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '70px';
+    nav.style.right = '20px';
+    nav.style.background = '#fff';
+    nav.style.padding = '20px';
+    nav.style.borderRadius = '10px';
+    nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+  });
+</script>
+
+</body>
+</html>
