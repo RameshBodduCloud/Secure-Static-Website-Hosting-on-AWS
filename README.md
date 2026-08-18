@@ -21,20 +21,41 @@ Production-style static website hosted on AWS using a **private S3 bucket**, **C
 ## Architecture
 
 ```
-Users
-  │
-  │  HTTPS
-  ▼
-Route 53 (DNS)
-  │
-  │  Alias A/AAAA
-  ▼
-CloudFront + ACM (us-east-1)
-  │
-  │  Origin fetch via OAC (cache miss)
-  ▼
-S3 Bucket (private)
-  index.html, assets
+┌─────────────────────────────────────────────────────────────┐
+│ RUNTIME FLOW (User Request) │
+│ │
+│ [User/Browser] │
+│ │ │
+│ │ 1) DNS lookup: sudharam.online │
+│ v │
+│ [Route 53 Hosted Zone] │
+│ │ │
+│ │ 2) Alias A/AAAA → CloudFront │
+│ v │
+│ [CloudFront Distribution] <── [ACM Certificate us-east-1] │
+│ │ │
+│ │ 3) Origin fetch via OAC (cache miss) │
+│ v │
+│ [S3 Bucket (Private, Block Public Access ON)] │
+│ │
+├─────────────────────────────────────────────────────────────┤
+│ (Cache Invalidation) │
+│ │
+│ [You upload index.html to S3 via Console] │
+│ │ │
+│ │ 4) S3 Event: ObjectCreated (suffix: index.html) │
+│ v │
+│ [Lambda Function (auto-cloudfront-invalidation)] │
+│ │ │
+│ │ 5) cloudfront:CreateInvalidation API │
+│ v │
+│ [CloudFront Cache Cleared ✅] │
+│ │ │
+│ │ 6) Next user request gets fresh content │
+│ v │
+│ [User sees updated website instantly] ✅ │
+│ │
+└─────────────────────────────────────────────────────────────┘
 
 Update / automation path (not in request path):
 S3 ObjectCreated (suffix: index.html)
@@ -106,7 +127,8 @@ S3 ObjectCreated (suffix: index.html)
 4. Default root object: `index.html`
 5. Allowed HTTP methods: **GET, HEAD** (static site)
 
-![CloudFront OAC](screenshots/cloudfront-oac.png)
+<img width="940" height="440" alt="image" src="https://github.com/user-attachments/assets/8e1938ce-040c-4b7b-a6df-7b55c24d8a8c" />
+
 
 ---
 
@@ -151,7 +173,8 @@ CloudFront can generate this automatically. The policy should allow **only** `s3
 5. Attach the certificate to the CloudFront distribution.
 6. Add the domain(s) under **Alternate domain names (CNAMEs)**.
 
-![ACM certificate](screenshots/acm-cert.png)
+<img width="940" height="393" alt="image" src="https://github.com/user-attachments/assets/58e933d6-c27b-4394-ad79-5228aecf004f" />
+
 
 ---
 
@@ -165,7 +188,8 @@ In the hosted zone:
 | `@` (apex) | AAAA | Yes | CloudFront distribution (optional IPv6) |
 | `www` | A | Yes | CloudFront distribution (optional) |
 
-![Route 53 alias](screenshots/route53-alias.png)
+<img width="1919" height="769" alt="image" src="https://github.com/user-attachments/assets/efce5faa-5144-4784-bf8d-5879bbc5e585" />
+
 
 If the domain is registered outside AWS, update the registrar nameservers to the Route 53 hosted-zone NS records.
 
@@ -174,6 +198,8 @@ If the domain is registered outside AWS, update the registrar nameservers to the
 ### 6. Lambda: automatic CloudFront invalidation
 
 When `index.html` is uploaded/overwritten in S3, Lambda calls `cloudfront:CreateInvalidation`.
+<img width="940" height="246" alt="image" src="https://github.com/user-attachments/assets/d23ecfe7-3038-451d-9523-99af82977955" />
+
 
 #### Lambda code (`lambda/invalidate_cloudfront.py`)
 
@@ -235,8 +261,8 @@ def lambda_handler(event, context):
 - Bucket: your website bucket
 - Suffix: `index.html`  
   (avoids one invalidation per CSS/JS/image upload)
+<img width="1919" height="838" alt="image" src="https://github.com/user-attachments/assets/3c4096da-b1a7-4103-ae05-e5ef051b3bef" />
 
-![Lambda trigger](screenshots/lambda-trigger.png)
 
 ---
 
@@ -264,7 +290,8 @@ Add your console screenshots under `screenshots/` and they will render here.
 | `lambda-trigger.png` | S3 event trigger on Lambda |
 | `live-site.png` | Live site on custom domain |
 
-![Live site](screenshots/live-site.png)
+<img width="1911" height="782" alt="image" src="https://github.com/user-attachments/assets/56235bf3-24f5-4d85-a962-bc1e50c8d915" />
+
 
 ---
 
@@ -305,12 +332,3 @@ Add your console screenshots under `screenshots/` and they will render here.
 - Prefer hashed asset filenames + long cache TTL in production; invalidate mainly HTML.
 
 ---
-
-## License
-
-MIT
-```
-
-Save this as `README.md` in the repo root. Put screenshots in a `screenshots/` folder using the filenames above so the images render automatically.
-
-If you want, I can also give you a short **About** blurb and GitHub topics (`aws`, `s3`, `cloudfront`, `route53`, `lambda`, `static-website`).
