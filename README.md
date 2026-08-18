@@ -198,7 +198,8 @@ If the domain is registered outside AWS, update the registrar nameservers to the
 ### 6. Lambda: automatic CloudFront invalidation
 
 When `index.html` is uploaded/overwritten in S3, Lambda calls `cloudfront:CreateInvalidation`.
-<img width="940" height="246" alt="image" src="https://github.com/user-attachments/assets/d23ecfe7-3038-451d-9523-99af82977955" />
+<img width="940" height="246" alt="image" src="https://github.com/user-attachments/assets/ed20551d-c4af-4eb1-8daa-3ba06311fe27" />
+<img width="940" height="347" alt="image" src="https://github.com/user-attachments/assets/a975aadb-3cd6-4b29-af97-1276e69e13e6" />
 
 
 #### Lambda code (`lambda/invalidate_cloudfront.py`)
@@ -260,8 +261,8 @@ def lambda_handler(event, context):
 - Event: `s3:ObjectCreated:*`
 - Bucket: your website bucket
 - Suffix: `index.html`  
-  (avoids one invalidation per CSS/JS/image upload)
-<img width="1919" height="838" alt="image" src="https://github.com/user-attachments/assets/3c4096da-b1a7-4103-ae05-e5ef051b3bef" />
+<img width="940" height="407" alt="image" src="https://github.com/user-attachments/assets/ec647eb0-f753-45d9-b91e-5a09fde349a3" />
+
 
 
 ---
