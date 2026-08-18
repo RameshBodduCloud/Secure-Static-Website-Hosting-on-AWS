@@ -274,11 +274,12 @@ def lambda_handler(event, context):
 4. Lambda creates a CloudFront invalidation.
 5. Hard-refresh the browser (`Ctrl + F5` / `Cmd + Shift + R`).
 
+***************************live-site******************************
+<img width="1911" height="782" alt="image" src="https://github.com/user-attachments/assets/56235bf3-24f5-4d85-a962-bc1e50c8d915" />
+
 ---
 
 ## Screenshots
-
-Add your console screenshots under `screenshots/` and they will render here.
 
 | Screenshot | Description |
 |---|---|
@@ -290,7 +291,6 @@ Add your console screenshots under `screenshots/` and they will render here.
 | `lambda-trigger.png` | S3 event trigger on Lambda |
 | `live-site.png` | Live site on custom domain |
 
-<img width="1911" height="782" alt="image" src="https://github.com/user-attachments/assets/56235bf3-24f5-4d85-a962-bc1e50c8d915" />
 
 
 ---
