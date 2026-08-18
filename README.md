@@ -80,19 +80,18 @@ S3 ObjectCreated (suffix: index.html)
 ---
 ## Repository Structure
 ```
-.
-├── index.html                 # Static website
-├── screenshots/               # Console / architecture screenshots
-│   ├── architecture.png
-│   ├── s3-bucket.png
-│   ├── cloudfront-oac.png
-│   ├── route53-alias.png
-│   ├── acm-cert.png
-│   ├── lambda-trigger.png
-│   └── live-site.png
-├── lambda/
-│   └── invalidate_cloudfront.py
+├── index.html
+├── lambda_function.py
+├── Bucket-Policy.json
+├── LambdaCloudFrontInvalidationPolicy.json
 └── README.md
+
+
+File**	                                    Purpose**
+index.html	                                Static website
+lambda_function.py     	                    Lambda code that creates a CloudFront invalidation
+Bucket-Policy.Json	                        S3 bucket policy for CloudFront OAC (read-only)
+LambdaCloudFrontInvalidationPolicy.json	    IAM policy for the Lambda execution role
 ```
 
 ---
